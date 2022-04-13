@@ -9,27 +9,34 @@ const main = async() =>{
         [100, 50, 75],
         "Illidan ",
         "https://i.imgur.com/yY6t92I.png",
-        100000,
+        1000000,
         2
     );
     await gameContract.deployed();
     console.log("Contract deployed to:", gameContract.address);
 
     let txn;
+    txn = await gameContract.mintCharacterNFT(0);
+    await txn.wait();
+    console.log("Minted NFT #1");
+    
+    txn = await gameContract.mintCharacterNFT(1);
+    await txn.wait();
+    console.log("Minted NFT #2");
+
     txn = await gameContract.mintCharacterNFT(2);
     await txn.wait();
-        //Attacknig boss
-    txn = await gameContract.attackBoss();
-    await txn.wait();
+    console.log("Minted NFT #3");
 
-    txn = await gameContract.attackBoss();
-    await txn.wait();
+    
+txn = await gameContract.attackBoss();
+await txn.wait();
 
-    txn = await gameContract.attackBoss();
+    txn = await gameContract.mintCharacterNFT(1);
     await txn.wait();
-
-    //t returnedTokenUri = await gameContract.tokenURI(1);
-    //console.log("token uri", returnedTokenUri);
+    console.log("Minted NFT #4");
+    
+    console.log("Done deploying and minting !");
 };
 
 const runMain = async()=>{
