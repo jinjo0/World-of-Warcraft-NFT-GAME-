@@ -158,7 +158,7 @@ contract MyEpicGame is ERC721{
 
     }
 
-    function checkIfUserHashNFT() public view returns(CharacterAttributes memory){
+    function checkIfUserHasNFT() public view returns(CharacterAttributes memory){
         uint256 userNftTokenId =  nftHolders[msg.sender];
 
         if(userNftTokenId > 0){
